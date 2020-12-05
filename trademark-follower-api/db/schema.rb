@@ -10,13 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_02_034508) do
+ActiveRecord::Schema.define(version: 2020_12_05_174959) do
 
   create_table "trademarks", force: :cascade do |t|
-    t.string "title"
-    t.integer "serial"
+    t.string "mark"
+    t.integer "serialNumber"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status"
+    t.string "prosecutionHistory"
+    t.date "statusDate"
+    t.date "filingDate"
+    t.integer "registrationNumber"
   end
 
 end
