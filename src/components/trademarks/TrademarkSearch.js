@@ -5,7 +5,7 @@ const API_KEY = process.env.REACT_APP_USPTO_API_KEY;
 class TrademarkSearch extends Component {
 
     state = {
-        data: JSON,
+        data: "",
         mark: '',
         serialNumber: '',
         status: '',
@@ -19,7 +19,13 @@ class TrademarkSearch extends Component {
         console.log(JSON.trademarks[0].status.markElement)
         this.setState({
             data: JSON,
-            mark: JSON.trademarks[0].status.markElement
+            mark: JSON.trademarks[0].status.markElement,
+            serialNumber: JSON.trademarks[0].status.serialNumber,
+            status: JSON.trademarks[0].status.extStatusDesc,
+            prosecutionHistory: JSON.trademarks[0].prosecutionHistory,
+            statusDate: JSON.trademarks[0].status.statusDate,
+            filingDate: JSON.trademarks[0].status.filingDate,
+            registrationNumber: ''
             });
 }
 
