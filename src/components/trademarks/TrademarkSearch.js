@@ -1,22 +1,25 @@
 import React, { Component } from 'react';
+import Trademark from './Trademark'
 
 const API_KEY = process.env.REACT_APP_USPTO_API_KEY;
 
 class TrademarkSearch extends Component {
 
     state = {
-        data: "",
+        data: '',
         mark: '',
         serialNumber: '',
         status: '',
         prosecutionHistory: '',
         statusDate: '',
         filingDate: '',
-        registrationNumber: ''
+        registrationNumber: '',
+        text: '',
+        error: '',
+        submitted: false
       }
 
     saveState(JSON){
-        console.log(JSON.trademarks[0].status.markElement)
         this.setState({
             data: JSON,
             mark: JSON.trademarks[0].status.markElement,
@@ -25,9 +28,18 @@ class TrademarkSearch extends Component {
             prosecutionHistory: JSON.trademarks[0].prosecutionHistory,
             statusDate: JSON.trademarks[0].status.statusDate,
             filingDate: JSON.trademarks[0].status.filingDate,
-            registrationNumber: ''
+            registrationNumber: '',
+            error: '',
+            submitted: true
             });
-}
+    }
+
+    error(error) {
+        this.setState({
+            error: `${error}`,
+            submitted: false
+        })
+    }
 
 trademarkSearch = (sn) => {
     fetch(`https://cors-anywhere.herokuapp.com/https://tsdrapi.uspto.gov/ts/cd/casestatus/sn${sn}/info`, { headers: {"USPTO-API-KEY": API_KEY}}
@@ -35,7 +47,9 @@ trademarkSearch = (sn) => {
         return response.json() 
     }).then(JSON => { 
         this.saveState(JSON)
-  })
+    }).catch(error => {
+      this.error(error)
+    })
 }
 //90130409 test Serial number: Ben Jones Codes
 handleOnChange(event) {
@@ -52,13 +66,14 @@ handleOnChange(event) {
 render() {
     return (
       <div>
-        <form onSubmit={(event) => this.handleOnSubmit(event)}>
+        <form class='center' onSubmit={(event) => this.handleOnSubmit(event)}>
           <input
             type="text"
             value={this.state.text}
             onChange={(event) => this.handleOnChange(event)} />
           <input type="submit" />
         </form>
+        {this.state.submitted && < Trademark state={this.state}/>}
       </div>
     );
   }
