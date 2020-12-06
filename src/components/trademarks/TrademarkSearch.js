@@ -18,7 +18,7 @@ class TrademarkSearch extends Component {
         text: '',
         error: false,
         submitted: false,
-        errorMessage: '',
+        errorMessage: ''
       }
 
     saveState(JSON){
