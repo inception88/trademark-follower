@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import Trademark from './Trademark.js'
+import Trademark from './components/trademarks/Trademark.js'
 
 function App() {
   return (
