@@ -16,8 +16,9 @@ class TrademarkSearch extends Component {
         filingDate: '',
         registrationNumber: '',
         text: '',
-        error: '',
-        submitted: false
+        error: false,
+        submitted: false,
+        errorMessage: '',
       }
 
     saveState(JSON){
