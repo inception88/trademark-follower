@@ -15,8 +15,15 @@ trademarks = () => {
 
 render() {
     return (
-      <div className="App">
-        <button onClick={this.trademarks}>Look for trademarks</button>
+      <div>
+        <h1>Trademark Title</h1>
+        <p>Filing Date</p>
+        <p>Status Date</p>
+        <p>Status</p>
+        <p>Serial Number</p>
+        <p>Registration number if registered</p>
+        <p>Prosecution history</p>
+        <button onClick={this.trademarks}>Update the Trademark</button>
       </div>
     );
   }
