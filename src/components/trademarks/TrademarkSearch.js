@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Trademark from './Trademark'
+import Trademark from './Trademark';
+import Error from '../errors/Error';
 
 const API_KEY = process.env.REACT_APP_USPTO_API_KEY;
 
@@ -29,15 +30,17 @@ class TrademarkSearch extends Component {
             statusDate: JSON.trademarks[0].status.statusDate,
             filingDate: JSON.trademarks[0].status.filingDate,
             registrationNumber: '',
-            error: '',
+            errorMessage: '',
+            error: false,
             submitted: true
             });
     }
 
     error(error) {
         this.setState({
-            error: `${error}`,
-            submitted: false
+            error: true,
+            submitted: false,
+            errorMessage: `${error}`
         })
     }
 
@@ -66,7 +69,7 @@ handleOnChange(event) {
 render() {
     return (
       <div>
-        <form class='center' onSubmit={(event) => this.handleOnSubmit(event)}>
+        <form className='center' onSubmit={(event) => this.handleOnSubmit(event)}>
           <input
             type="text"
             value={this.state.text}
@@ -74,6 +77,7 @@ render() {
           <input type="submit" />
         </form>
         {this.state.submitted && < Trademark state={this.state}/>}
+        {this.state.error && < Error message={this.state.errorMessage}/>}
       </div>
     );
   }
