@@ -2,21 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import Navbar from './components/navigation/Navbar';
-import Error from './components/errors/Error';
+import NavBar from './components/navigation/Navbar';
 import TrademarkSearch from './components/trademarks/TrademarkSearch';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 ReactDOM.render(
-  <Router>
-    <Navbar />
-      <Route exact path="/" component={Error} />
+  <React.StrictMode>
+    <Router>
+      <NavBar />
+      <Route exact path="/" component={TrademarkSearch} />
       <Route exact path="/search" component={TrademarkSearch} />
-    <React.StrictMode>
       <App />
-    </React.StrictMode>
-  </Router>,
+    </Router>
+  </React.StrictMode>,
   document.getElementById('root')
 );
 
