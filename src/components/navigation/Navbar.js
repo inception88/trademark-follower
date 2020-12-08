@@ -1,25 +1,31 @@
-import React from 'react'
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
-import { Link } from 'react-router-dom'
+import React from 'react';
+import 'antd/dist/antd.css';
+import { Menu } from 'antd';
+import { Link } from 'react-router-dom';
 
-class NavBar extends React.Component {
-  render() {
+const NavBar = () => {
     return (
-      <div>
-        <Navbar bg="light" expand="lg">
-            <Navbar.Brand as={Link} to="/">Trademark Follower</Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="mr-auto">
-                    <Nav.Link as={Link} to="/">Home</Nav.Link>
-                    <Nav.Link as={Link} to="/search">Search</Nav.Link>
-                </Nav>
-            </Navbar.Collapse>
-        </Navbar>
-      </div>
-    )
-  }
+      <Menu mode="horizontal">
+        <Menu.Item>
+        <Link to="/">
+          Navigation One
+          </Link>
+        </Menu.Item>
+                <Menu.Item>
+        <Link to="/home">
+          Navigation Two
+          </Link>
+                  </Menu.Item>
+                <Menu.Item>
+        <Link to="/search">
+          Navigation Three
+          </Link>
+        </Menu.Item>
+        <Menu.Item>
+            Got 'Em!
+        </Menu.Item>
+      </Menu>
+    );
 }
  
 export default NavBar;
