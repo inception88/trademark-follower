@@ -1,29 +1,38 @@
-import React from 'react';
+import { Component } from 'react';
 import 'antd/dist/antd.css';
 import { Menu, Affix } from 'antd';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-const NavBar = () => {
+class NavBar extends Component {
+  
+  static propTypes = {
+    location: PropTypes.object.isRequired
+  }
+
+  render() {
+    const { location } = this.props;
     return (
-      <Affix><Menu mode="horizontal">
-        <Menu.Item><Link to="/">
+      <Affix><Menu mode="horizontal" selectedKeys={[location.pathname]}>
+        <Menu.Item key="/"><Link to="/">
           Trademark Follower
           </Link></Menu.Item>
-        <Menu.Item><Link to="/home">
+        <Menu.Item key="/home"><Link to="/home">
           Home
           </Link></Menu.Item>
-        <Menu.Item><Link to="/search">
+        <Menu.Item key="/search"><Link to="/search">
           Search
           </Link></Menu.Item>
-        <Menu.Item><Link to="/signup">
+        <Menu.Item key="/signup"><Link to="/signup">
           Sign Up
           </Link></Menu.Item>
-        <Menu.Item><Link to="/login">
+        <Menu.Item key="/login"><Link to="/login">
           Login
           </Link></Menu.Item>
         </Menu>
       </Affix>
     );
+  }
 }
  
-export default NavBar;
+export default withRouter(NavBar);
