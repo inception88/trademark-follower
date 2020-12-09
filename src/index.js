@@ -11,9 +11,10 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       <NavBar />
-      <Route exact path="/" component={TrademarkSearch} />
-      <Route exact path="/search" component={TrademarkSearch} />
       <App />
+      <Route exact path="/" component={TrademarkSearch} />
+      <Route exact path="/home" component={TrademarkSearch} />
+      <Route exact path="/search" component={TrademarkSearch} />
     </Router>
   </React.StrictMode>,
   document.getElementById('root')
