@@ -56,6 +56,7 @@ trademarkSearch = (sn) => {
     })
 }
 //90130409 test Serial number: Ben Jones Codes
+//87818121 test Serial number: EnterAction Apparel
 handleOnChange(event) {
     this.setState({
       text: event.target.value,
