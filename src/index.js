@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import NavBar from './components/navigation/Navbar';
+import Home from './components/navigation/Home';
 import TrademarkSearch from './components/trademarks/TrademarkSearch';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
@@ -12,7 +13,7 @@ ReactDOM.render(
     <Router>
       <NavBar />
       <App />
-      <Route exact path="/" component={TrademarkSearch} />
+      <Route exact path="/" component={Home} />
       <Route exact path="/home" component={TrademarkSearch} />
       <Route exact path="/search" component={TrademarkSearch} />
     </Router>
