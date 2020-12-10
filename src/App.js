@@ -10,8 +10,8 @@ function App() {
     <Router>
       <NavBar />
       <Route exact path="/" component={Home} />
-      <Route exact path="/home" component={TrademarkSearch} />
-      <Route exact path="/search" component={TrademarkSearch} />
+      <Route exact path="/signup" />
+      <Route exact path="/login" />
     </Router>
     </div>
   );

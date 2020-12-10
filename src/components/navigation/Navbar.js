@@ -17,12 +17,6 @@ class NavBar extends Component {
         <Menu.Item key="/"><Link to="/">
           Trademark Follower
           </Link></Menu.Item>
-        <Menu.Item key="/home"><Link to="/home">
-          Home
-          </Link></Menu.Item>
-        <Menu.Item key="/search"><Link to="/search">
-          Search
-          </Link></Menu.Item>
         <Menu.Item key="/signup"><Link to="/signup">
           Sign Up
           </Link></Menu.Item>
