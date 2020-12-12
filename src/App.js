@@ -1,20 +1,24 @@
 import './App.css';
+import React, { Component } from 'react';
 import NavBar from './components/navigation/Navbar';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './components/navigation/Home';
 import Signup from './components/users/Signup';
+import Login from './components/users/Login';
 
-function App() {
-  return (
+class App extends Component {
+
+  render() {return (
     <div className="App">
     <Router>
-      <NavBar />
+      <NavBar loggedIn={this.loggedIn}/>
       <Route exact path="/" component={Home} />
-      <Route exact path="/signup" component={Signup} />
-      <Route exact path="/login" />
+      <Route exact path="/signup"> <Signup /></Route>
+      <Route exact path="/login" component={Login}/>
     </Router>
     </div>
   );
 }
+};
 
 export default App;

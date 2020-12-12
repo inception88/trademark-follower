@@ -18,10 +18,10 @@ const tailLayout = {
   },
 };
 
-class Signup extends Component {
+class Login extends Component {
 
     onFinish = (values) => {
-        fetch(`http://localhost:3000/api/v1/users`, {
+        fetch(`http://localhost:3000/api/v1/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -33,10 +33,11 @@ class Signup extends Component {
             })
         })
         .then(resp => resp.json())
-        .then(json => {
-            localStorage.setItem("token", json.jwt)
+        .then(data => {
+            localStorage.setItem("token", data.jwt)
+            console.log(data)
         })
-      };
+    };
     
     onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
@@ -90,5 +91,4 @@ class Signup extends Component {
   );
 };
 };
-
-export default Signup;
+export default Login;
