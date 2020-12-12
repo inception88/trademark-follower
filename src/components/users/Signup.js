@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 //import React from 'react';
 import 'antd/dist/antd.css';
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button } from 'antd';
 
 const layout = {
   labelCol: {
@@ -22,7 +22,23 @@ const tailLayout = {
 class Signup extends Component {
 
     onFinish = (values) => {
-        console.log('Success:', values);
+        fetch(`http://localhost:3000/users`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                email: values.email,
+                password: values.password
+            })
+        })
+        .then(resp => resp.json())
+        .then(json => {
+            localStorage.setItem("token", json.jwt)
+            console.log(json)
+            console.log(this.state)
+        })
       };
     
     onFinishFailed = (errorInfo) => {
