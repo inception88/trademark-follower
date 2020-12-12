@@ -3,7 +3,7 @@ const usersReducer = (state = { users: [] }, action) => {
       case 'CREATE_USER':
         return {
           ...state,
-          users: action.users
+          users: action.user
         }
       default:
         return state;
