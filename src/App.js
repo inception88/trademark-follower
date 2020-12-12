@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import NavBar from './components/navigation/Navbar';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './components/navigation/Home';
-import Signup from './components/users/Signup';
 import Login from './components/users/Login';
+import UserContainer from './containers/UserContainer';
 
 class App extends Component {
 
@@ -13,7 +13,7 @@ class App extends Component {
     <Router>
       <NavBar loggedIn={this.loggedIn}/>
       <Route exact path="/" component={Home} />
-      <Route exact path="/signup"> <Signup /></Route>
+      <UserContainer/>
       <Route exact path="/login" component={Login}/>
     </Router>
     </div>
