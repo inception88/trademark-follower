@@ -46,7 +46,8 @@ class Signup extends Component {
         rules={[
           {
             required: true,
-            message: 'Please input your email!',
+            message: 'Please input a valid email!',
+            type: "email"
           },
         ]}
       >
@@ -59,15 +60,12 @@ class Signup extends Component {
         rules={[
           {
             required: true,
-            message: 'Please input your password!',
+            message: 'Password must be at least 6 characters!',
+            min: 6
           },
         ]}
       >
         <Input.Password />
-      </Form.Item>
-
-      <Form.Item {...tailLayout} name="remember" valuePropName="checked">
-        <Checkbox>Remember me</Checkbox>
       </Form.Item>
 
       <Form.Item {...tailLayout}>
