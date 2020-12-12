@@ -35,8 +35,8 @@ class Signup extends Component {
         .then(resp => resp.json())
         .then(json => {
             localStorage.setItem("token", json.jwt)
+            localStorage.setItem('user', json.user)
             console.log(json)
-            console.log(this.state)
         })
       };
     
