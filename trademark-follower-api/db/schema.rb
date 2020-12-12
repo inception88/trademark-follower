@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_05_174959) do
+ActiveRecord::Schema.define(version: 2020_12_12_153806) do
 
   create_table "trademarks", force: :cascade do |t|
     t.string "mark"
@@ -22,6 +22,13 @@ ActiveRecord::Schema.define(version: 2020_12_05_174959) do
     t.date "statusDate"
     t.date "filingDate"
     t.integer "registrationNumber"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
