@@ -1,10 +1,24 @@
-export const signup = () => {
+export const signup = (user) => {
     return (dispatch) => {
-      dispatch({ type: 'CREAT_USER'})
-      fetch('https://learn-co-curriculum.github.io/cat-api/cats.json').then(response => {
-        return response.json()
-      }).then(responseJSON => {
-        dispatch({ type: 'ADD_CATS', cats: responseJSON.images })
-      })
-    }
-  }
+      dispatch({ type: 'CREATE_USER'})
+      fetch(`http://localhost:3000/api/v1/users`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify({
+            email: user.email,
+            password: user.password
+        })
+    })
+    .then(response => {
+        return response.json()})
+        .then(json => {
+            localStorage.setItem('token', json.jwt)
+        })
+          .catch((errors) => {
+            console.log(errors)
+          });
+    };
+}
