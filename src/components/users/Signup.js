@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import React from 'react';
 import 'antd/dist/antd.css';
 import { Form, Input, Button } from 'antd';
 
@@ -22,7 +21,7 @@ const tailLayout = {
 class Signup extends Component {
 
     onFinish = (values) => {
-        fetch(`http://localhost:3000/users`, {
+        fetch(`http://localhost:3000/api/v1/users`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
