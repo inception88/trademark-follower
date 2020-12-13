@@ -15,7 +15,32 @@ export const signup = (user) => {
         return response.json()})
         .then(json => {
             localStorage.setItem('token', json.jwt)
-            dispatch({ type: 'CREATE_USER', user: json.user})
+            dispatch({ type: 'AUTHENTICATE', token: json.jwt})
+        })
+          .catch((errors) => {
+            console.log(errors)
+          });
+    };
+}
+
+export const login = (user) => {
+    return (dispatch) => {
+      fetch(`http://localhost:3000/api/v1/login`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify({
+            email: user.email,
+            password: user.password
+        })
+    })
+    .then(response => {
+        return response.json()})
+        .then(json => {
+            localStorage.setItem('token', json.jwt)
+            dispatch({ type: 'AUTHENTICATE', token: json.jwt})
         })
           .catch((errors) => {
             console.log(errors)

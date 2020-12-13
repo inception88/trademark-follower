@@ -1,9 +1,14 @@
-const usersReducer = (state = { users: [] }, action) => {
+const usersReducer = (state = { authenticated: false, token: [] }, action) => {
     switch(action.type) {
-      case 'CREATE_USER':
+      case 'AUTHENTICATE':
         return {
-          ...state,
-          users: action.user
+          token: action.token,
+          authenticated: true
+        }
+      case 'LOGOUT':
+        return {
+            token: [],
+            authenticated: false
         }
       default:
         return state;

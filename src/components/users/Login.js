@@ -20,23 +20,8 @@ const tailLayout = {
 
 class Login extends Component {
 
-    onFinish = (values) => {
-        fetch(`http://localhost:3000/api/v1/login`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify({
-                email: values.email,
-                password: values.password
-            })
-        })
-        .then(resp => resp.json())
-        .then(data => {
-            localStorage.setItem("token", data.jwt)
-            console.log(data)
-        })
+    onFinish = (user) => {
+        this.props.login(user)
     };
     
     onFinishFailed = (errorInfo) => {
