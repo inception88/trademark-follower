@@ -14,7 +14,6 @@ export const signup = (user) => {
     .then(response => {
         return response.json()})
         .then(json => {
-            localStorage.setItem('token', json.jwt)
             dispatch({ type: 'AUTHENTICATE', token: json.jwt})
         })
           .catch((errors) => {
@@ -39,11 +38,16 @@ export const login = (user) => {
     .then(response => {
         return response.json()})
         .then(json => {
-            localStorage.setItem('token', json.jwt)
             dispatch({ type: 'AUTHENTICATE', token: json.jwt})
         })
           .catch((errors) => {
             console.log(errors)
           });
+    };
+}
+
+export const logout = () => {
+    return (dispatch) => {
+        dispatch({ type: 'LOGOUT'})
     };
 }

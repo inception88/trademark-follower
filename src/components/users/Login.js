@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import 'antd/dist/antd.css';
 import { Form, Input, Button } from 'antd';
+import { withRouter } from "react-router-dom";
 
 const layout = {
   labelCol: {
@@ -18,10 +19,13 @@ const tailLayout = {
   },
 };
 
+
 class Login extends Component {
 
     onFinish = (user) => {
+        const { history } = this.props;
         this.props.login(user)
+        history.push("/")
     };
     
     onFinishFailed = (errorInfo) => {
@@ -76,4 +80,4 @@ class Login extends Component {
   );
 };
 };
-export default Login;
+export default withRouter(Login);
