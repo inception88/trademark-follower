@@ -5,17 +5,9 @@ import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 class NavBar extends Component {
-
-  state = {
-    loggedIn: !!localStorage.token
-  }
   
   static propTypes = {
     location: PropTypes.object.isRequired
-  }
-
-  logout = () => {
-    localStorage.clear()
   }
 
   render() {
@@ -25,13 +17,13 @@ class NavBar extends Component {
         <Menu.Item key="/"><Link to="/">
           Trademark Follower
           </Link></Menu.Item>
-        <Menu.Item key="/signup"><Link to="/signup">
+          {!this.props.authenticated && <Menu.Item key="/signup"><Link to="/signup">
           Sign Up
-          </Link></Menu.Item>
-        <Menu.Item key="/login"><Link to="/login">
+          </Link></Menu.Item>}
+          {!this.props.authenticated && <Menu.Item key="/login"><Link to="/login">
           Login
-          </Link></Menu.Item>
-          {this.state.loggedIn && <Menu.Item key="/logout"><Link to={this.logout}>
+          </Link></Menu.Item>}
+          {this.props.authenticated && <Menu.Item key="/logout"><Link to="/logout">
           Logout
           </Link></Menu.Item>}
         </Menu>
