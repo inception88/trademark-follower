@@ -1,6 +1,6 @@
 export const signup = (user) => {
     return (dispatch) => {
-      fetch(`http://localhost:3000/api/v1/users`, {
+      fetch(`http://localhost:3001/api/v1/users`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -24,7 +24,7 @@ export const signup = (user) => {
 
 export const login = (user) => {
     return (dispatch) => {
-      fetch(`http://localhost:3000/api/v1/login`, {
+      fetch(`http://localhost:3001/api/v1/login`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -38,7 +38,7 @@ export const login = (user) => {
     .then(response => {
         return response.json()})
         .then(json => {
-            dispatch({ type: 'AUTHENTICATE', token: json.jwt})
+            authenticate(dispatch, json)
         })
           .catch((errors) => {
             console.log(errors)
@@ -50,4 +50,14 @@ export const logout = () => {
     return (dispatch) => {
         dispatch({ type: 'LOGOUT'})
     };
+}
+
+const authenticate = (dispatch, json) => {
+        console.log(!!json.jwt)
+    if (!!json.jwt) {
+        dispatch({ type: 'AUTHENTICATE', token: json.jwt})
+    }
+    else {
+        dispatch({ type: 'FAILURE'})
+    }
 }

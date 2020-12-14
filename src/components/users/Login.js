@@ -19,13 +19,19 @@ const tailLayout = {
   },
 };
 
-
 class Login extends Component {
 
-    onFinish = (user) => {
+    componentDidUpdate() {
         const { history } = this.props;
-        this.props.login(user)
-        history.push("/")
+        console.log("update")
+        if (this.props.authenticated === true) {
+            history.push("/")
+            console.log("history push")
+        }
+    }
+
+    onFinish = (user) => {
+        this.props.login(user);
     };
     
     onFinishFailed = (errorInfo) => {

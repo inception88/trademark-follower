@@ -5,15 +5,13 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './components/navigation/Home';
 import UserContainer from './containers/UserContainer';
 import { connect } from 'react-redux';
-import { logout } from './actions/userActions';
-
 
 class App extends Component {
 
   render() {return (
     <div className="App">
     <Router>
-      <NavBar logout={this.props.logout} authenticated={this.props.authenticated}/>
+      <NavBar authenticated={this.props.authenticated}/>
       <Route exact path="/" component={Home} />
       <UserContainer/>
     </Router>
@@ -24,9 +22,4 @@ class App extends Component {
 
 const mapStateToProps = ({ authenticated }) => ({ authenticated })
 
-const mapDispatchToProps = dispatch => {
-  return {
-  logout: () => dispatch(logout())}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps)(App);

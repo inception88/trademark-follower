@@ -12,7 +12,7 @@ class UsersContainer extends Component {
   render() {
     return (
       <div>
-        <Route exact path="/login"> <Login login={this.props.login}/></Route>
+        <Route exact path="/login"> <Login authenticated={this.props.authenticated} login={this.props.login}/></Route>
         <Route exact path="/signup"> <Signup signup={this.props.signup} /></Route>
         <Route exact path="/logout"> <Logout logout={this.props.logout} /></Route>
       </div>
@@ -20,14 +20,14 @@ class UsersContainer extends Component {
   }
 }
 
-const mapStateToProps = ({ users }) => ({ users })
+const mapStateToProps = ({ authenticated }) => ({ authenticated })
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
     return {
     signup: user => dispatch(signup(user)),
     login: user => dispatch(login(user)),
     logout: () => dispatch(logout())
-}
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer)
