@@ -13,7 +13,7 @@ class UsersContainer extends Component {
     return (
       <div>
         <Route exact path="/login"> <Login authenticated={this.props.authenticated} login={this.props.login}/></Route>
-        <Route exact path="/signup"> <Signup signup={this.props.signup} /></Route>
+        <Route exact path="/signup"> <Signup authenticated={this.props.authenticated} signup={this.props.signup} /></Route>
         <Route exact path="/logout"> <Logout logout={this.props.logout} /></Route>
       </div>
     )

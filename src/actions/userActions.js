@@ -14,7 +14,7 @@ export const signup = (user) => {
     .then(response => {
         return response.json()})
         .then(json => {
-            dispatch({ type: 'AUTHENTICATE', token: json.jwt})
+            authenticate(dispatch, json)
         })
           .catch((errors) => {
             console.log(errors)

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import 'antd/dist/antd.css';
 import { Form, Input, Button } from 'antd';
+import { withRouter } from "react-router-dom";
 
 const layout = {
   labelCol: {
@@ -19,6 +20,15 @@ const tailLayout = {
 };
 
 class Signup extends Component {
+
+    componentDidUpdate() {
+        const { history } = this.props;
+        console.log("update")
+        if (this.props.authenticated === true) {
+            history.push("/")
+            console.log("history push")
+        }
+    }
 
     onFinish = (user) => {
        this.props.signup(user)
@@ -77,4 +87,4 @@ class Signup extends Component {
 };
 };
 
-export default Signup;
+export default withRouter(Signup);
