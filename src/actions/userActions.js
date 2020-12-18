@@ -1,6 +1,6 @@
 export const signup = (user) => {
     return (dispatch) => {
-      fetch(`http://localhost:3001/api/v1/users`, {
+      fetch(`https://trademark-follower-api.herokuapp.com/api/v1/users`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -24,7 +24,7 @@ export const signup = (user) => {
 
 export const login = (user) => {
     return (dispatch) => {
-      fetch(`http://localhost:3001/api/v1/login`, {
+      fetch(`https://trademark-follower-api.herokuapp.com/api/v1/login`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
