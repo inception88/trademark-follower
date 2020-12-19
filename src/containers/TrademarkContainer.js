@@ -7,13 +7,13 @@ class TrademarksContainer extends Component {
   render() {
     return (
       <div>
-        <Route exact path="/follows"> <Trademarks trademarks={this.props.trademarks} followTrademark={this.props.followTrademark} unfollowTrademark={this.props.unfollowTrademark} /></Route>
+        <Route exact path="/follows"> <Trademarks token={this.props.token} followTrademark={this.props.followTrademark} unfollowTrademark={this.props.unfollowTrademark} /></Route>
       </div>
     )
   }
 }
 
-const mapStateToProps = ({ trademarks }) => ({ trademarks })
+const mapStateToProps = ({ token }) => ({ token })
 
 const mapDispatchToProps = dispatch => ({
     followTrademark: trademark => dispatch({ type: "FOLLOW_TRADEMARK", trademark }),

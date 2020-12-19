@@ -1,14 +1,12 @@
-const trademarksReducer = (state = { authenticated: false, token: [] }, action) => {
+const trademarksReducer = (state = { follows: [] }, action) => {
     switch(action.type) {
-      case 'AUTHENTICATE':
+      case 'FOLLOW_TRADEMARK':
         return {
-          token: action.token,
-          authenticated: true
+          ...state, follows: state.follows.concat(action.follow)
         }
-      case 'LOGOUT':
+      case 'UNFOLLOW_TRADEMARK':
         return {
-            token: [],
-            authenticated: false
+            ...state, follows: state.follows.filter(follow => follow.id !== action.follow)
         }
       default:
         return state;
