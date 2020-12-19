@@ -1,9 +1,12 @@
 import React from 'react';
+import { Button } from 'antd';
 
 const Trademark = props => {
   return (
     <div>
     <h1 className='center'>{props.state.mark}</h1>
+    <button className='center'>Follow</button>
+    <Button type= "ghost">Follow</Button>
     <p>Filing Date: {props.state.filingDate}</p>
     <p>Status Date: {props.state.statusDate}</p>
     <p>Status: {props.state.status}</p>
