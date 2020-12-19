@@ -23,6 +23,7 @@ class TrademarkContainer extends Component {
 const mapStateToProps = ( state ) => ({token: state.user.token, trademarks: state.trademarks.trademarks})
 const mapDispatchToProps = dispatch => ({
     fetchTrademarks: (token) => dispatch(fetchTrademarks(token)),
+    //fetchTrademark: (sn) => dispatch(fetchTrademark(sn)),
     //followTrademark: trademark => dispatch(followTrademark()),
     //unfollowTrademark: trademark => dispatch(unfollowTrademark())
 })
