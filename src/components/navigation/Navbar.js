@@ -23,6 +23,9 @@ class NavBar extends Component {
           {!this.props.authenticated && <Menu.Item key="/login"><Link to="/login">
           Login
           </Link></Menu.Item>}
+          {this.props.authenticated && <Menu.Item key="/follows" ><Link to="/follows">
+          My Follows
+          </Link></Menu.Item>}
           {this.props.authenticated && <Menu.Item ><Link to="/logout">
           Logout
           </Link></Menu.Item>}
