@@ -20,6 +20,6 @@ class App extends Component {
 }
 };
 
-const mapStateToProps = ({ authenticated }) => ({ authenticated })
+const mapStateToProps = ({ user }) => ({ authenticated: user.authenticated })
 
 export default connect(mapStateToProps)(App);

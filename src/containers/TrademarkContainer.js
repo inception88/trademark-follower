@@ -13,11 +13,11 @@ class TrademarksContainer extends Component {
   }
 }
 
-const mapStateToProps = ({ token }) => ({ token })
+const mapStateToProps = ({ trademarks }) => ({ trademarks })
 
 const mapDispatchToProps = dispatch => ({
-    followTrademark: trademark => dispatch({ type: "FOLLOW_TRADEMARK", trademark }),
-    unfollowTrademark: trademark => dispatch({type: 'UNFOLLOW_TRADEMARK', id: trademark.id })
+    followTrademark: trademark => dispatch(followTrademark()),
+    unfollowTrademark: trademark => dispatch(unfollowTrademark())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TrademarksContainer)

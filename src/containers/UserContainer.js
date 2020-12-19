@@ -20,7 +20,7 @@ class UsersContainer extends Component {
   }
 }
 
-const mapStateToProps = ({ authenticated }) => ({ authenticated })
+const mapStateToProps = ({ user }) => ({ authenticated: user.authenticated })
 
 const mapDispatchToProps = (dispatch) => {
     return {
