@@ -1,12 +1,16 @@
-const trademarksReducer = (state = { follows: [] }, action) => {
+const trademarksReducer = (state = { trademarks: [] }, action) => {
     switch(action.type) {
+      case 'ADD_TRADEMARKS':
+        return {
+          trademarks: action.trademarks
+        }
       case 'FOLLOW_TRADEMARK':
         return {
-          ...state, follows: state.follows.concat(action.follow)
+          ...state, trademarks: state.trademarks.concat(action.trademark)
         }
       case 'UNFOLLOW_TRADEMARK':
         return {
-            ...state, follows: state.follows.filter(follow => follow.id !== action.follow)
+            ...state, trademarks: state.trademarks.filter(trademark => trademark.id !== action.trademark)
         }
       default:
         return state;

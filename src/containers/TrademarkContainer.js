@@ -1,23 +1,30 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Trademarks from '../trademarks/Trademarks';
+import Trademarks from '../components/trademarks/Trademarks';
+import { fetchTrademarks } from '../actions/trademarkActions';
 
-class TrademarksContainer extends Component {
+
+class TrademarkContainer extends Component {
+
+  componentDidMount() {
+    console.log(this.props.token)
+    this.props.fetchTrademarks(this.props.token);
+  }
 
   render() {
     return (
       <div>
-        <Route exact path="/follows"> <Trademarks token={this.props.token} followTrademark={this.props.followTrademark} unfollowTrademark={this.props.unfollowTrademark} /></Route>
+        <Trademarks trademarks={this.props.trademarks} followTrademark={this.props.followTrademark} unfollowTrademark={this.props.unfollowTrademark} />
       </div>
     )
   }
 }
 
-const mapStateToProps = ({ trademarks }) => ({ trademarks })
-
+const mapStateToProps = ( state ) => ({token: state.user.token, trademarks: state.trademarks.trademarks})
 const mapDispatchToProps = dispatch => ({
-    followTrademark: trademark => dispatch(followTrademark()),
-    unfollowTrademark: trademark => dispatch(unfollowTrademark())
+    fetchTrademarks: (token) => dispatch(fetchTrademarks(token)),
+    //followTrademark: trademark => dispatch(followTrademark()),
+    //unfollowTrademark: trademark => dispatch(unfollowTrademark())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(TrademarksContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(TrademarkContainer)

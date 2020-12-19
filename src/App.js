@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './components/navigation/Home';
 import UserContainer from './containers/UserContainer';
 import { connect } from 'react-redux';
+import TrademarkContainer from './containers/TrademarkContainer';
 
 class App extends Component {
 
@@ -13,7 +14,8 @@ class App extends Component {
     <Router>
       <NavBar authenticated={this.props.authenticated}/>
       <Route exact path="/" component={Home} />
-      <UserContainer/>
+      <Route exact path="/follows" component={TrademarkContainer} />
+      <UserContainer />
     </Router>
     </div>
   );

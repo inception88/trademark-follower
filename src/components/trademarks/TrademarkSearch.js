@@ -78,7 +78,7 @@ render() {
             onChange={(event) => this.handleOnChange(event)} />
           <input type="submit" />
         </form>
-        {this.state.submitted && < Trademark state={this.state}/>}
+        {this.state.submitted && < Trademark trademark={this.state}/>}
         {this.state.error && < Error message={this.state.errorMessage}/>}
       </div>
     );
