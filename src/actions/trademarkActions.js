@@ -2,7 +2,7 @@ export const fetchTrademarks = (token) => {
     return (dispatch) => {
       //fetch(`https://trademark-follower-api.herokuapp.com/api/v1/trademarks`, {
       console.log("Do the fetch!")  
-      fetch(`http://localhost:3001/api/v1/trademarks`, {
+      fetch(`https://trademark-follower-api.herokuapp.com/api/v1/trademarks`, {
           headers: {
           "Authorization": `Bearer ${token}`
       }
@@ -20,7 +20,7 @@ export const fetchTrademarks = (token) => {
 
 export const followTrademark = (trademark, token) => {
   return (dispatch) => {
-    fetch(`http://localhost:3001/api/v1/trademarks`, {
+    fetch(`https://trademark-follower-api.herokuapp.com/api/v1/trademarks`, {
       method: "POST",
       headers: {
           "Content-Type": "application/json",
@@ -46,7 +46,7 @@ export const followTrademark = (trademark, token) => {
 export const unfollowTrademark = (id, token) => {
   return (dispatch) => {
 
-    fetch(`http://localhost:3001/api/v1/trademarks/${id}`, {
+    fetch(`https://trademark-follower-api.herokuapp.com/api/v1/trademarks/${id}`, {
       method: "DELETE",
       headers: {
           "Content-Type": "application/json",
