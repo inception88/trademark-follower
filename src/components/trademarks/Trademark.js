@@ -7,7 +7,7 @@ const Trademark = props => {
       {console.log(props)}
     <h1 className='center'>{props.trademark.mark}</h1>
     <a className='center' target='_' href={`https://tsdr.uspto.gov/#caseNumber=${props.trademark.serialNumber}&caseSearchType=US_APPLICATION&caseType=DEFAULT&searchType=statusSearch`}>USPTO TSDR Link</a><br></br>
-    <Button type="danger" color="red">Unfollow</Button>
+    {!!props.trademark.id && <Button onClick={props.unfollowTrademark(props.trademark.id, props.token)} type="danger">Unfollow</Button>}
     <Button onClick={props.followTrademark(props.trademark, props.token)} type="primary">+Follow</Button>
     <p>Filing Date: {props.trademark.filingDate}</p>
     <p>Status Date: {props.trademark.statusDate}</p>

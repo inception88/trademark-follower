@@ -42,3 +42,29 @@ export const followTrademark = (trademark, token) => {
         });
   };
 }
+
+export const unfollowTrademark = (id, token) => {
+  return (dispatch) => {
+
+    fetch(`http://localhost:3001/api/v1/trademarks/${id}`, {
+      method: "DELETE",
+      headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+          "Authorization": `Beaer ${token}`
+      },
+      body: JSON.stringify({
+          id: id
+      })
+  })
+  .then(response => {
+      return response.json()})
+      .then(json => {
+        console.log(json)
+        dispatch({ type: 'UNFOLLOW_TRADEMARK', id: json.id })
+      })
+        .catch((errors) => {
+          console.log(errors)
+        });
+  };
+}

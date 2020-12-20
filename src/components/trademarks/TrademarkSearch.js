@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Trademark from './Trademark';
 import Error from '../errors/Error';
+import { withRouter } from 'react-router-dom';
 
 const API_KEY = process.env.REACT_APP_USPTO_API_KEY;
 
@@ -68,6 +69,17 @@ handleOnChange(event) {
     this.trademarkSearch(this.state.text);
   }
 
+  componentDidUpdate(prevProps) {
+    const { history } = this.props;
+    console.log("search update")
+    console.log(prevProps)
+    console.log(this.props)
+    if (this.props.trademarks !== prevProps.trademarks) {
+        history.push("/follows")
+        console.log("search history push")
+    }
+}
+
 render() {
     return (
       <div>
@@ -78,11 +90,11 @@ render() {
             onChange={(event) => this.handleOnChange(event)} />
           <input type="submit" />
         </form>
-        {this.state.submitted && < Trademark token={this.props.token} followTrademark={this.props.followTrademark} trademark={this.state}/>}
+        {this.state.submitted && < Trademark token={this.props.token} followTrademark={this.props.followTrademark} unfollowTrademark={this.props.unfollowTrademark} trademark={this.state} />}
         {this.state.error && < Error message={this.state.errorMessage}/>}
       </div>
     );
   }
 }
 
-export default TrademarkSearch
+export default withRouter(TrademarkSearch)

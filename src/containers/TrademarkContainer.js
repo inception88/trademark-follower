@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Trademarks from '../components/trademarks/Trademarks';
-import { fetchTrademarks, followTrademark } from '../actions/trademarkActions';
+import { fetchTrademarks, followTrademark, unfollowTrademark } from '../actions/trademarkActions';
 
 
 class TrademarkContainer extends Component {
@@ -25,7 +25,7 @@ const mapDispatchToProps = dispatch => ({
     fetchTrademarks: (token) => dispatch(fetchTrademarks(token)),
     //fetchTrademark: (sn) => dispatch(fetchTrademark(sn)),
     followTrademark: (trademark, token) => () => dispatch(followTrademark(trademark, token)),
-    //unfollowTrademark: trademark => dispatch(unfollowTrademark())
+    unfollowTrademark: (id, token) => () => dispatch(unfollowTrademark(id, token))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TrademarkContainer)

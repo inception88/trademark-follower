@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Trademark from '../trademarks/Trademark';
+import { withRouter } from 'react-router-dom';
 
 const API_KEY = process.env.REACT_APP_USPTO_API_KEY;
 
@@ -17,7 +18,8 @@ class Trademarks extends Component {
         text: '',
         error: false,
         submitted: false,
-        errorMessage: ''
+        errorMessage: '',
+        id: ''
       }
 
     saveState(JSON){
@@ -56,19 +58,31 @@ trademarkSearch = (sn) => {
 }
 
     fetchTrademark = (trademark) => () => {
-        console.log(trademark.serialNumber)
+        this.setState({...this.state, id: trademark.id})
         this.trademarkSearch(trademark.serialNumber)
     }
+
+    componentDidUpdate(prevProps) {
+      const { history } = this.props;
+      console.log("trademarks update")
+      console.log(prevProps)
+      console.log(this.props)
+      if (this.props.trademarks !== prevProps.trademarks) {
+          history.push("/follows")
+          console.log("trademarks history push")
+      }
+  }
 
   render() {
     return(
       <div>
         {this.props.trademarks.map((trademark, index) => {
-           return <a onClick={this.fetchTrademark(trademark)}><h1>{index+1}. {trademark.mark}</h1></a>})}
-        {this.state.submitted && < Trademark token={this.props.token} followTrademark={this.props.followTrademark} unfollowTrademark={this.props.unfollowTrademark} trademark={this.state}/>}
+           return <a onClick={this.fetchTrademark(trademark)}><h1>{index+1}. {trademark.mark}</h1></a>
+           })}
+        {this.state.submitted && < Trademark token={this.props.token} followTrademark={this.props.followTrademark} unfollowTrademark={this.props.unfollowTrademark} trademark={this.state} />}
       </div>
     );
   }
 };
 
-export default Trademarks;
+export default withRouter(Trademarks)
