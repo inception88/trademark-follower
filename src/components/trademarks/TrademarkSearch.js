@@ -76,6 +76,9 @@ handleOnChange(event) {
     console.log(this.props)
     if (this.props.trademarks !== prevProps.trademarks) {
         history.push("/follows")
+        this.setState({
+          submitted: false
+        })
         console.log("search history push")
     }
 }

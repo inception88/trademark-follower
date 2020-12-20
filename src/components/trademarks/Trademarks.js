@@ -68,8 +68,10 @@ trademarkSearch = (sn) => {
       console.log(prevProps)
       console.log(this.props)
       if (this.props.trademarks !== prevProps.trademarks) {
-          history.push("/follows")
-          console.log("trademarks history push")
+          this.setState({
+            submitted: false
+          })
+          console.log("trademarks no longer submitted")
       }
   }
 
