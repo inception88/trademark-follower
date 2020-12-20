@@ -5,7 +5,8 @@ const Trademark = props => {
   return (
     <div>
     <h1 className='center'>{props.trademark.mark}</h1>
-    <button className='center'>Unfollow</button>
+    <a className='center' target='_' href={`https://tsdr.uspto.gov/#caseNumber=${props.trademark.serialNumber}&caseSearchType=US_APPLICATION&caseType=DEFAULT&searchType=statusSearch`}>USPTO TSDR Link</a><br></br>
+    <button>Unfollow</button>
     <Button type="ghost">Follow</Button>
     <p>Filing Date: {props.trademark.filingDate}</p>
     <p>Status Date: {props.trademark.statusDate}</p>
