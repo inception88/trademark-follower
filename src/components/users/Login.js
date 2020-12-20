@@ -23,9 +23,9 @@ class Login extends Component {
 
     componentDidUpdate() {
         const { history } = this.props;
-        console.log("update")
+        console.log("login update")
         if (this.props.authenticated === true) {
-            history.push("/")
+            history.push("/follows")
             console.log("history push")
         }
     }

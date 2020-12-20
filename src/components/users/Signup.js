@@ -23,7 +23,7 @@ class Signup extends Component {
 
     componentDidUpdate() {
         const { history } = this.props;
-        console.log("update")
+        console.log("signup update")
         if (this.props.authenticated === true) {
             history.push("/")
             console.log("history push")
