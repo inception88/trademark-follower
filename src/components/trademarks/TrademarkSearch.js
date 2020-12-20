@@ -97,6 +97,7 @@ render() {
       <div>
         <form className='center' onSubmit={(event) => this.handleOnSubmit(event)}>
           <input
+            placeholder="Serial Number"
             type="text"
             value={this.state.text}
             onChange={(event) => this.handleOnChange(event)} />
