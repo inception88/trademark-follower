@@ -19,7 +19,8 @@ class TrademarkSearch extends Component {
         text: '',
         error: false,
         submitted: false,
-        errorMessage: ''
+        errorMessage: '',
+        followed: ''
       }
 
     saveState(JSON){
@@ -36,7 +37,7 @@ class TrademarkSearch extends Component {
             error: false,
             submitted: true
             });
-    }
+          }
 
     error(error) {
         this.setState({
@@ -72,8 +73,16 @@ handleOnChange(event) {
   componentDidUpdate(prevProps) {
     const { history } = this.props;
     console.log("search update")
-    console.log(prevProps)
     console.log(this.props)
+    if (!!this.props.trademarks.filter(trademark => trademark.serialNumber === this.state.serialNumber)[0]) {
+      if(this.state.followed !== true) {
+      this.setState({followed: true})
+    }}
+    else {
+      if(this.state.followed !== false) {
+        this.setState({followed: false})
+      }
+    } 
     if (this.props.trademarks !== prevProps.trademarks) {
         history.push("/follows")
         this.setState({

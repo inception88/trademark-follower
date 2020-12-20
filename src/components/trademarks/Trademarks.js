@@ -19,7 +19,8 @@ class Trademarks extends Component {
         error: false,
         submitted: false,
         errorMessage: '',
-        id: ''
+        id: '',
+        followed: ''
       }
 
     saveState(JSON){
@@ -58,7 +59,7 @@ trademarkSearch = (sn) => {
 }
 
     fetchTrademark = (trademark) => () => {
-        this.setState({...this.state, id: trademark.id})
+        this.setState({id: trademark.id})
         this.trademarkSearch(trademark.serialNumber)
     }
 
@@ -67,6 +68,15 @@ trademarkSearch = (sn) => {
       console.log("trademarks update")
       console.log(prevProps)
       console.log(this.props)
+      if (!!this.props.trademarks.filter(trademark => trademark.serialNumber === this.state.serialNumber)[0]) {
+        if(this.state.followed !== true) {
+        this.setState({followed: true})
+      }}
+      else {
+        if(this.state.followed !== false) {
+          this.setState({followed: false})
+        }
+      }
       if (this.props.trademarks !== prevProps.trademarks) {
           this.setState({
             submitted: false
