@@ -49,6 +49,7 @@ export const login = (user) => {
 export const logout = () => {
     return (dispatch) => {
         dispatch({ type: 'LOGOUT'})
+        dispatch({ type: 'CLEAR_TRADEMARKS'})
     };
 }
 
