@@ -65,11 +65,10 @@ trademarkSearch = (sn) => {
       <div>
         {this.props.trademarks.map((trademark, index) => {
            return <a onClick={this.fetchTrademark(trademark)}><h1>{index+1}. {trademark.mark}</h1></a>})}
-        {this.state.submitted && < Trademark trademark={this.state}/>}
+        {this.state.submitted && < Trademark token={this.props.token} followTrademark={this.props.followTrademark} unfollowTrademark={this.props.unfollowTrademark} trademark={this.state}/>}
       </div>
     );
   }
 };
-//return <li><Trademark key={index} trademark={trademark}/></li>})}
 
 export default Trademarks;

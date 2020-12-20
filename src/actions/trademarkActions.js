@@ -17,3 +17,28 @@ export const fetchTrademarks = (token) => {
         });
       }
     }
+
+export const followTrademark = (trademark, token) => {
+  return (dispatch) => {
+    fetch(`http://localhost:3001/api/v1/trademarks`, {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+          "Authorization": `Beaer ${token}`
+      },
+      body: JSON.stringify({
+          mark: trademark.mark,
+          serialNumber: trademark.serialNumber
+      })
+  })
+  .then(response => {
+      return response.json()})
+      .then(json => {
+        dispatch({ type: 'FOLLOW_TRADEMARK', trademark: json })
+      })
+        .catch((errors) => {
+          console.log(errors)
+        });
+  };
+}

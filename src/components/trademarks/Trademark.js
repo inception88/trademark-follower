@@ -4,10 +4,11 @@ import { Button } from 'antd';
 const Trademark = props => {
   return (
     <div>
+      {console.log(props)}
     <h1 className='center'>{props.trademark.mark}</h1>
     <a className='center' target='_' href={`https://tsdr.uspto.gov/#caseNumber=${props.trademark.serialNumber}&caseSearchType=US_APPLICATION&caseType=DEFAULT&searchType=statusSearch`}>USPTO TSDR Link</a><br></br>
-    <button>Unfollow</button>
-    <Button type="ghost">Follow</Button>
+    <Button type="danger" color="red">Unfollow</Button>
+    <Button onClick={props.followTrademark(props.trademark, props.token)} type="primary">+Follow</Button>
     <p>Filing Date: {props.trademark.filingDate}</p>
     <p>Status Date: {props.trademark.statusDate}</p>
     <p>Status: {props.trademark.status}</p>

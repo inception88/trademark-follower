@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Trademarks from '../components/trademarks/Trademarks';
-import { fetchTrademarks } from '../actions/trademarkActions';
+import { fetchTrademarks, followTrademark } from '../actions/trademarkActions';
 
 
 class TrademarkContainer extends Component {
@@ -14,7 +14,7 @@ class TrademarkContainer extends Component {
   render() {
     return (
       <div>
-        <Trademarks trademarks={this.props.trademarks} followTrademark={this.props.followTrademark} unfollowTrademark={this.props.unfollowTrademark} />
+        <Trademarks token={this.props.token} trademarks={this.props.trademarks} followTrademark={this.props.followTrademark} unfollowTrademark={this.props.unfollowTrademark} />
       </div>
     )
   }
@@ -24,7 +24,7 @@ const mapStateToProps = ( state ) => ({token: state.user.token, trademarks: stat
 const mapDispatchToProps = dispatch => ({
     fetchTrademarks: (token) => dispatch(fetchTrademarks(token)),
     //fetchTrademark: (sn) => dispatch(fetchTrademark(sn)),
-    //followTrademark: trademark => dispatch(followTrademark()),
+    followTrademark: (trademark, token) => () => dispatch(followTrademark(trademark, token)),
     //unfollowTrademark: trademark => dispatch(unfollowTrademark())
 })
 
