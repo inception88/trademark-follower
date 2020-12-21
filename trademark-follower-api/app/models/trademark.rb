@@ -1,2 +1,0 @@
-class Trademark < ApplicationRecord
-end
